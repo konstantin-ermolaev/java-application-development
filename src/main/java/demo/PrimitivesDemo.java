@@ -30,8 +30,35 @@ public strictfp  class PrimitivesDemo {
         //endregion
 
         //region wrappers
+        //region boxing/unboxing
+        Integer ii = new Integer(2);
+        int bb = ii.intValue();
+        //endregion
+        //region autoboxing/autounboxing
+        Integer iii = 2; //new Integer(2)
+        int bbb = iii; //iii.intValue()
+
+        Integer counter = 0;
+        while(isTrue()) {
+            counter++; //performance issue!!!
+        }
+        //endregion
+
+
         System.out.println(Short.MAX_VALUE);
         System.out.println(Double.MAX_VALUE);
         //endregion
+
+        //region Types Overflow
+        byte overflowCounter = Byte.MIN_VALUE; //-128..127
+        for (int n = 0; n < 258; n++) {
+            overflowCounter++;
+        }
+        System.out.println("+++++++ " + overflowCounter);
+        //endregion
+    }
+
+    private static boolean isTrue() {
+        return false;
     }
 }
